@@ -1,4 +1,34 @@
-body {background-color: lightblue;}
-h2 { color: rgb(6, 56, 68);}
+body {
+    background-color: #D4D6B9;
+    font-family: Arial,sans-serif;
+}
+header{
+    background-color: #cf6d64;
+}
+main{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+footer{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+h1 {font-family: sans-serif;border-bottom: 1px solid blue;}
+h1,h2,h3{color: #81171B;font-family: 'Alumni Sans', sans-serif;}
 p { margin-left: 100px;}
+blockquote { 
+    background-color: lightgray;
+    padding: 1rem;
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 img.side {float:right; margin: 0 12px;}
+a:link{color:#C75146;}
+a:visited{color:#4b1410;}
+a:focus,a:hover{color:#C75146;}
+a:active{color:#4b1410;}
