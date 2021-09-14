@@ -1,0 +1,50 @@
+body{font-size: medium; 
+    font-family: 'Vollkorn', serif; 
+    color: #6e2540;
+    background-color:#f5f6e8;
+}
+footer{
+    position: -webkit-sticky; /*Safari*/
+    position: sticky;
+    bottom: 5px;
+    background: #D9DBBC; 
+    border: 3px inset #D9DBBC; 
+    text-align: center;
+    width: fit-content;
+    padding: 3px;
+}
+img{max-width: 30%; margin: 15px;}
+img.Homework{
+    margin: 5px;
+    max-width: 200px;
+}
+a.music{
+    margin-left: 20px;
+    display: list-item;
+    list-style-type: '🎵';
+    padding-inline-start: 5px;
+}
+h1, h2{width: fit-content; padding: 5px;}
+h2{
+    font-size: large;
+    color: #B8D8BA;
+    background-color: #A53860;
+}
+#selfImage{float: right;}
+#Title{
+    color:#A53860; 
+    background-color: #B8D8BA; 
+}
+
+a:link{color: #DA627D;}
+a:visited{color:#A53860;}
+a:focus,a:hover{color: #DA627D;}
+a:active{color:#A53860;}
+
+/*Colors
+#B8D8BA
+#D9DBBC
+#FCDDBC
+#DA627D
+#A53860
+*/
