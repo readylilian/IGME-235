@@ -1,17 +1,19 @@
-/* Do everything in this file */
-/*Header info*/
-h2,h3{border-bottom: 1px solid red;}
-h2{clear: right;}
-/*Figure info*/
-figure{float: right; width: 40%;}
-figure img{width: 100%;}
-/*Tetromno div info*/
-div.tet{float:left; width:80%; border: solid blue; margin: 5px; padding: 2px;}
-/*Body stuff*/
-footer{clear: left; 
-    /*position: relative; bottom: 500px*/
-    /*position: absolute; top:0;*/
-    /*position: fixed; top:0; right:0;*/
-    /*position: fixed; top:0; left:0;
-    z-index: -2;*/
+/*Figure*/
+figure{max-width: 650px; margin-left: auto; margin-right: auto;}
+figure img{width:100%;}
+/*header, main, footer*/
+header, main, footer {width: 90%; margin-left: auto; margin-right: auto;}
+/*Tetrominos*/
+#tetlist{display: flex; flex-flow: row wrap;}
+div.tet{flex: 0 1 450px; border: 1px solid black; text-align: center;} 
+div img{width: 60%;}
+div.aliases{text-align: left; margin: 1em;}
+span.name{
+    display: block; 
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: large;
+    font-weight: bold;
 }
+div.long img{width: 80%;}
+div.square img{width: 40%;}
