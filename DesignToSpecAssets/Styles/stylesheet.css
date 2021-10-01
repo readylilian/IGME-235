@@ -26,6 +26,7 @@ body
     font-family: dogica_pixelregular;
     font-weight: normal;
     line-height:1.4em;
+    font-size:small;
     min-height: 100vh;
     color: #FFFFFF;
     display: grid;
@@ -67,19 +68,21 @@ img{max-width: 100%;}
     grid-area: tree;
     display: grid;
     grid-template-areas: 
-    "left" "right";
+    "left   right";
     grid-template-columns: 50% 50%;
     grid-template-rows: min-content;
     column-gap: 20px;
 }
-.left,.right,#descriptor {padding: 7%;}
+.left,.right,#descriptor {padding:7%;}
 .right
 {
+    grid-area: right;
     background-image: linear-gradient(to bottom right, #E8FdF590, #244D3EE0);
     border: 10px solid #FFFFFF ;
     width: fit-content;
     height: fit-content
 }
+.left{grid-area:left; padding-top: 2%}
 /*valley pic*/
 #spread{grid-area: valley;}
 /*Blocks*/
