@@ -15,14 +15,19 @@
     font-style: normal;
 
 }
-h1,h2,h3
+/*Headings*/
+h1,h2,h3,h4
 {
     font-family: retro_computerregular;
     font-weight: normal;
 }
+h1{font-size: xx-large;}
+h2{font-size: x-large;}
+h3{font-size: 1.2rem;}
 /*Body and general set up*/
 body
 {
+    height: 100%;
     font-family: dogica_pixelregular;
     font-weight: normal;
     line-height:1.4em;
@@ -36,9 +41,9 @@ body
     "valley"
     "blocks"
     "footer";
-    grid-template-rows: 70px 3fr 3fr 2fr auto;
+    grid-template-rows: 60px 1fr 1fr 1fr 10%;
     grid-template-columns: 100%;
-    row-gap: 5vh;
+    row-gap: 3%;
     margin:0;
     background-color: #35363D;
 }
@@ -54,12 +59,12 @@ img{max-width: 100%;}
     display: flex;
     flex-flow: row;
     height: 100%;
+    align-items: center;
 }
-#header.img{width: 10%;}
-#header h2
+#header img{width: 4em;}
+#header h4
 {
     margin-left: auto; 
-    margin-top: 1rem;
     text-align: right;
 }
 /*Oak and its items*/
@@ -93,29 +98,37 @@ img{max-width: 100%;}
     grid-template-areas: 
     "planks  sticks"
     "chest   stairs"; 
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
-    gap: 20px 20px;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    gap: 10px 20px;
+    align-items: center;
+    
 }
+#crafted img{width: 10vw;}
 .planks,.stick,.chest,.stairs
 {
     display: grid;
     grid-template-areas: "image   desc";
+    grid-template-columns: auto auto;
+    grid-template-rows: 100%;
     column-gap: 20px;
+    align-items: center;
+    
 }
 .planks{grid-area: planks;}
 .stick{grid-area: sticks;}
 .chest{grid-area: chest;}
 .stairs{grid-area: stairs;}
+#descriptor{grid-area: desc;}
 .craf
 {
     text-align: center;
     grid-area: image;
     border: 10px solid #FFFFFF ;
     background-color: #324E44;
-    padding: 15px;
+    
 }
-#descriptor{grid-area: desc;}
+
 /*Footer set up*/
 footer{
     background-image: url('../Assets/trees.jpg');
@@ -127,6 +140,10 @@ footer{
     display: grid;
     grid-template-areas: "trees   copyright";
     column-gap: 30%;
+    border-top: 10px solid #FFFFFF ;
+    line-height: 2.3em;
+    
+    
 }
 .copyright{text-align: right; grid-area: copyright;}
 .treescool{grid-area: trees;}
