@@ -140,6 +140,10 @@ header img
 
 @media screen and (max-width:770px)
 {
+    h1{font-size: 1.8rem;}
+    h2{font-size: 1.2rem;}
+    h3{font-size: 1rem}
+    h4{font-size: .8rem;}
     header img
     {
         margin-left: 1vw;
@@ -147,20 +151,28 @@ header img
     }
     body
     {
+        font-size: .8rem;
         grid-template-columns: 100%;
         grid-template-rows: 10vh 6vh 1fr .2fr 1fr 18rem;
     }
-    .project img, .projectvar img{width: 70%; margin:5px 0;}
-    p{height: 100%;}
+    #projectProg,#projectScroll
+    {
+        display: flex;
+        flex-flow: column;
+        align-content: space-around;
+    }
+    .project img, .projectvar img{height: 100%; margin:5px 0;}
+    p{height: 100%;margin: 2vh 0;}
     .project, .projectvar
     {
-        max-height: 700px;
-        grid-template-rows: 5vh .3fr .7fr; 
+        height:100%;
+        grid-template-rows: 5vh 40% auto; 
         grid-template-columns: auto;
         grid-template-areas: 
         "title"    
         "photo"   
         "desc";
+        row-gap: 2vh;
     }
     #about img{width: 40%; float: left; margin: 10px}
     #about
@@ -197,6 +209,7 @@ header img
         "desc";
     }
     #about img{width: 40%; float: left; margin: 10px}
-    #projectProg{display: flex;
+    #projectProg
+    {display: flex;
         justify-content: space-evenly;}
 }
