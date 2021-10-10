@@ -21,7 +21,27 @@
 	"use strict"; 
   
   // add your own code here.
-	
-	</script>
+  	let h1 = document.querySelector("h1");
+	h1.innerHTML = "My <i>UFO</i> Page";
+	document.querySelector("h2").innerHTML = "My UFO Info";
+	document.querySelector("h2:nth-of-type(2)").innerHTML = "My UFO Pictures"
+	document.querySelector("h2:nth-of-type(2)").innerHTML = ""
+	let body = document.querySelector("body");
+	body.style.fontFamily = "sans-serif";
+	body.style.color = "#800000"
+
+	let p = document.querySelector("p");
+	p.innerHTML= "Report your UFO sightings here: <a href = 'http://www.nuforc.org '> http://www.nuforc.org </a>";
+	p.style.color = "green";
+	p.style.fontWeight = "bold";
+	p.style.fontSize = "2em";
+	p.style.textTransform = "uppercase";
+	p.style.textShadow = "3px 2px #A44";
+
+	document.querySelector("p:nth-of-type(2)").innerHTML="";
+	document.querySelector("p:nth-of-type(3)").innerHTML= ",<img src = 'https://e3.365dm.com/21/06/1600x900/skynews-us-ufo_5423290.jpg?20210621212942' alt = 'UFO'>";
+	document.querySelector("footer").innerHTML= new Date().getFullYear() + " Lilian Ready";
+
+</script>
 </body>
 </html>
