@@ -44,7 +44,7 @@ header
     grid-area: header;
     background-color: #284B63;
     color: #F4F9E9;
-    padding: 3vw;
+    padding: 50px;
     display: flex;
     flex-flow: row;
     align-items: center;
@@ -78,6 +78,7 @@ header img
 }
 .project, .projectvar
 {
+    box-sizing: border-box;
     max-height: 400px;
     display: grid;
     grid-template-rows: 10% 90%; 
@@ -144,39 +145,44 @@ header img
     h2{font-size: 1.4rem;}
     h3{font-size: 1.2rem}
     h4{font-size: 1rem;}
+    header{padding: 20px; flex-wrap: wrap;}
     header img
     {
-        margin-left: 1vw;
+        margin-left: 5px;
         height: 100%;
     }
     body
     {
         font-size: 1rem;
         grid-template-columns: 100%;
-        grid-template-rows: 100px 6vh 1fr .2fr 1fr 15rem;
+        grid-template-rows: 100px 10vh 1fr .2fr 1fr 15rem;
         
     }
     #nav{justify-content: space-evenly;}
     #projectProg,#projectScroll
     {
+        
         display: flex;
         flex-flow: column;
         align-content: space-around;
         max-height: 100%;
+        
     }
-    .project img, .projectvar img{height: 100%; margin:5px 0;}
-    p{height: 100%; margin: 10% 0;}
     .project, .projectvar
     {
+        
         height:100%;
         grid-template-rows: 3vh 40% auto; 
-        grid-template-columns: auto;
+        grid-template-columns: 100%;
         grid-template-areas: 
         "title"    
         "photo"   
         "desc";
         margin: 4% 0;
+        row-gap: 20px;
     }
+    .project img, .projectvar img{height: 100%; margin:5px 0;}
+    p{height: 98%; margin: 10% 0;}
     #about img{width: 40%; float: left; margin: 10px}
     #about
     {
@@ -197,7 +203,7 @@ header img
     #projectScroll
     {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-around;
     }
     .project img, .projectvar img{width: 70%; margin:5px 0;}
     .project p, .projectvar p{overflow-y: visible;}
@@ -216,8 +222,8 @@ header img
     #about
     {
         grid-template-rows: 10% 90%; 
-        grid-template-columns: 25% 72%;
-        grid-column-gap:3vh ;
+        grid-template-columns: 20% 75%;
+        grid-column-gap:20px ;
     }
     #about img
     {
