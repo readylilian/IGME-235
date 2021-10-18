@@ -18,9 +18,10 @@ a:link{color: #315d7a;}
 a:visited{color: #153243}
 a:focus, a:hover, a:active{color: #4a7795;}
 
-
+main img{width: 400px;}
 body
 {
+    font-family: 'Vollkorn', serif; 
     width: 100%;
     height: 100vh;
     font-size: 1rem;
@@ -222,8 +223,8 @@ header img
     #about
     {
         grid-template-rows: 10% 90%; 
-        grid-template-columns: 20% 75%;
-        grid-column-gap:20px ;
+        grid-template-columns: 20% 70%;
+        grid-column-gap:120px ;
     }
     #about img
     {
