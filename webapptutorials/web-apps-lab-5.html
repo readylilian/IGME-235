@@ -43,19 +43,19 @@ let whichButton = document.querySelector("#colorform");
 let infoText = document.querySelector("#info");
 let submitButton = document.querySelector("p button");
 let legend = document.querySelector("legend");
-let buttonList = document.querySelectorAll("p[name='colorGroup']");
+let buttonList = document.querySelectorAll("input[name='colorGroup']");
 
 let changeText = (e) =>{
     infoText.innerHTML = `You have selected "${e.target.value}"!`;
 }
 
-function submitColor(){
+let submitColor = (e) =>{
     for(const color of buttonList)
     {
-        console.log(color.value)
         if(color.checked == true)
         {
             infoText.innerHTML = `Your FINAL CHOICE is "${color.value}"!`;
+			legend.style.color = color.value;
         }
     }
     
