@@ -1,2 +1,82 @@
-body{font-family: 'Inconsolata', monospace;}
-#display{background-image: url("../images/bagels.jpg");}
+html{font-size: 20px;}
+body
+{
+    margin:auto 0 auto 0;
+    background-color: #885E4B;
+    font-family: 'Inconsolata', monospace;
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "body"
+    "footer";
+    grid-template-rows: auto 1fr auto;
+    text-align: center;
+    min-height: 100vh;
+}
+h1{color:#3f2c23;}
+h2
+{
+    font-size: 1rem;
+    color: #77726d;
+}
+header{
+    background-color:#E5DDD5;
+    grid-area: header;
+}
+#display
+{
+    grid-area: body;
+    margin: 0 auto;
+    width: 85vw;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url("../images/bagels.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    gap: 20px;
+}
+footer{
+    padding: 2%;
+    background-color:#E5DDD5;
+    grid-area: footer;
+}
+button
+{
+    color:#3f2c23;
+    background-color: #A96E6C;
+    border-color: #885E4B;
+    height: fit-content + 50px;
+    border-radius: 12px;
+    width: fit-content + 50px;
+    font-size: 1rem;
+    margin-bottom: auto;
+    padding: 1% 2%;
+    transition-duration: 0.3s;
+}
+button:hover{
+    background-color: #c38b7e;
+}
+button:active{
+    background-color:#9b6a54;
+}
+
+#phrase{
+    background-color: #C39F97BB;
+    color:#3f2c23;
+    width: 60%;
+    padding: 10%;
+    margin: auto auto auto auto;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+@media screen and (max-width:540px)
+{
+    #phrase
+    {
+        font-size: 1.5rem;
+        width: fit-content;
+    }
+}

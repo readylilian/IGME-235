@@ -11,7 +11,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap" rel="stylesheet">
     <script>
         "use strict"
-        let phrases=[];
+        let phrases=["I should make a bee dating game <br>- Lily Ready","I should buy a bagel and put every type of cream cheese on it <br>- Angela Hudak","I can probably order bagels (I was not capable of ordering bagels) <br>- Redacted","Bee 9/11 <br>- Corey Rigney","I should @channel in dev-null <br>- Lonnie Gerol", "We should have a mosh-pit but only line dances <br>- Olivia"];
+
+        
+        
+        window.onload = function(){
+            displayQuote();
+
+            let button = document.querySelector('button');
+            button.onclick = function(){
+            displayQuote();
+        }
+        }
+
+        function displayQuote(){
+            let x = Math.floor(Math.random() * phrases.length)
+            let quote = document.querySelector('#phrase');
+            quote.innerHTML = phrases[x];
+        }
     </script>
 
 </head>
@@ -20,11 +37,12 @@
         <h1>Bagel Ideas</h1>
     </header>
     <div id = "display">
-        <p id="phrase">Random Phrases Here</p>
+        <blockquote id="phrase">Random Phrases Here</blockquote>
+        <button>Think Again?</button>
     </div>
     <footer>
-        <h1>Lily Ready</h1>
         <p>Bagel Ideas refers to the ideas cooked up by various members on their journey to Bagels. Bagels is an event that occurs whenever someone stays up until five AM (often for school or some other deadline, but also in celebration) and decides that a fresh bagel is exactly what they need before collapsing for bed. Thus begins the journey to Bagels, which varies in definition from the twenty minutes to get to Bagel Land, to the hours it takes to stay awake.</p>
+        <h2>Lily Ready, October 2021</h2>
     </footer>
     
 </body>

@@ -1,0 +1,22 @@
+div {
+    box-sizing: border-box;
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+}
+
+#container
+{
+    display: grid;
+    grid-template-areas:
+    "header  header  header"
+    "left  main  right"
+    "left  footer  right";
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1.5fr 5fr 1fr;
+}
+#header{grid-area: header;}
+#left_sidebar{grid-area: left;}
+#main{grid-area: main;}
+#right_sidebar{grid-area: right;}
+#footer{grid-area: footer;}
