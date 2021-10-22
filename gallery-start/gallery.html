@@ -81,14 +81,25 @@
      </footer>
     </section>
     <script>
-		let imageList = document.querySelector("ul");
+		/*
+		The name of the image is stored in the data-image (custom data) attribute of each
+		span. In JavaScript we access these custom data properties using the .dataset 
+		property. We also covered this in web-apps-6.
+		*/
+		"use strict";
 		let image = document.querySelector("#placeholder");
+		let buttons = document.querySelectorAll("li");
 		
-	/*
-	The name of the image is stored in the data-image (custom data) attribute of each
-	span. In JavaScript we access these custom data properties using the .dataset 
-	property. We also covered this in web-apps-6.
-	*/
+		function changePicture(whichPic){
+			image.setAttribute("src",`images/${whichPic.dataset.image}`);
+			image.setAttribute("alt",`images/${whichPic.title}`);
+		}
+		
+		for(let i = 0; i<buttons.length;i++){
+			buttons[i].onclick = function() {
+				changePicture(buttons[i].children[0]);
+			}
+		}
 	</script>
 	   
 </body>
