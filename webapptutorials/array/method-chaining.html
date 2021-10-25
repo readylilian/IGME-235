@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Method Chaining Example
+       // A. Method chaining, and here it's pretty easy to read and understand
+        let highestNumber = [1,5,8,3,-10].sort().pop(); 	// 8
+        let lowestNumber = [1,5,8,3,-10].sort().shift(); 	// -10
+
+
+        // B. Method chaining, but here it's not quite as clear as to what's going on
+        // we use .trim() and .toLowerCase() to make the string comparison more flexible 
+        let nameArray = [" sUe ","  mARy  ","  bOB  "," freDdY  "];
+        let bobLowercaseAndTrimmed = nameArray.find( e=> e.trim().toLowerCase() == "bob" ).toLowerCase().trim(); // "bob"
+        let bobCapitalizedAndTrimmed = bobLowercaseAndTrimmed.charAt(0).toUpperCase() + bobLowercaseAndTrimmed.slice(1); // "Bob"
+
+
+        // C. Consider writing 2 generalized functions and encapsulate the chaining there
+        // It's more lines of code, but it's easier to understand, debug, and reuse
+        function findNameInArray(name,array){
+	        return array.find(e=> e.trim().toLowerCase() == name.trim().toLowerCase())
+        }
+
+        function capitalizedWord(word){
+	        // return a trimmed and capitalized version of word
+	        return (word.trim().charAt(0).toUpperCase() + word.trim().toLowerCase().slice(1));
+        }
+
+        // Call these functions (which are more "bulletproof" than our earlier versions)
+        let bobCapitalizedAndTrimmed2 = capitalizedWord(findNameInArray("bob",nameArray)); // "Bob"
+        let bobCapitalizedAndTrimmed3 = capitalizedWord(findNameInArray("   bOb ",nameArray)); // "Bob" 
+        //Fluent Interfaces
+        // getting an item from a table
+        client.getItem('user-table')
+            .setHashKey('userId', 'userA')
+            .setRangeKey('column', '@')
+            .execute()
+            .then(function(data) {
+            // data.result: the resulting object
+        })
+        //NodeList to Array
+        // Here are 4 ways to convert a NodeList to an array (there are others):
+
+        // 1 - a for loop
+        let array1 = [];
+        for(let i = 0, node; node = allNodes[i]; ++i) array1.push(node);
+
+        // 2 - call the slice() method on the NodeList 
+        let array2 = Array.prototype.slice.call(allNodes);
+
+        // 3 - .from() is a new Array method for ES6
+        let array3 = Array.from(allNodes); 	
+
+        // 4 - ES6 spread operator
+        let array4 = [...allNodes]; 
+    </script>
+</body>
+</html>
