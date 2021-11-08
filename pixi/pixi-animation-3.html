@@ -35,7 +35,7 @@ createCircles();
 // #2 - make some circles
 function createCircles(){
 	// red circles
-	for(let i=0;i<5;i++){
+	for(let i=0;i<50;i++){
 		let c = new Circle()
 		c.x = Math.random() * (screenWidth - 100) + 50;
 		c.y = Math.random() * (screenHeight - 100) + 50;
@@ -44,7 +44,7 @@ function createCircles(){
 	}
 	
 	// yellow circles
-	for(let i=0;i<10;i++){	
+	for(let i=0;i<100;i++){	
 		let c = new Circle(10,0xFFFF00);
 		c.x = Math.random() * (screenWidth - 100) + 50;
 		c.y = Math.random() * (screenHeight - 100) + 50;
