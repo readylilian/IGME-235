@@ -7,14 +7,25 @@ body
     "cal     pod     desc"
     "cal     sun     desc"
     "footer  footer  footer";
+    grid-template-rows: 80px auto auto 100px;
+    grid-column: 15% 70% 15%;
+    background-color: #03122b;
+    color: #FFFFFF;
+    margin: 0;
 }
-h1{grid-area: header;}
+header
+{
+    background-color: #03122b;
+    grid-area: header;
+}
 footer{grid-area: footer;}
 #calendar{grid-area: cal;}
 #location{grid-area: sun;}
 #description{grid-area: desc;}
+#pod{grid-area: pod; margin: auto}
 img
 {
-    grid-area:pod;
-    width: 100%;
+    opacity: 1;
+    max-height: 70vh;
+    max-width: 70vw;
 }
