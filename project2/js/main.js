@@ -16,9 +16,6 @@ function findLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position);
     }
-    else{
-
-    }
 }
 function position(pos){
     lat = pos.coords.latitude;
@@ -85,6 +82,8 @@ function imgDataLoaded(e){
     console.log(xhr.responseText);
     //7 turn text into Javascript object
     let obj = JSON.parse(xhr.responseText);
+
+    let body = document.querySelector('body');
     //8 if no response print and return
     if(!obj.date || obj.date == 0){
         document.querySelector("#pod").innerHTML = "<b>No results found for '" +  + "'</b>";
@@ -95,6 +94,9 @@ function imgDataLoaded(e){
         //get the hd version
         image += ` src = '${obj.hdurl}' alt = '${obj.title}'/> `;
         document.querySelector('#pod').innerHTML = image;
+        
+
+        //make background
         
     }
 }

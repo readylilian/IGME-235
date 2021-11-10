@@ -1,0 +1,20 @@
+body
+{
+    display: grid;
+    height: 100%;
+    grid-template-areas:
+    "header  header  header"
+    "cal     pod     desc"
+    "cal     sun     desc"
+    "footer  footer  footer";
+}
+h1{grid-area: header;}
+footer{grid-area: footer;}
+#calendar{grid-area: cal;}
+#location{grid-area: sun;}
+#description{grid-area: desc;}
+img
+{
+    grid-area:pod;
+    width: 100%;
+}
