@@ -3,25 +3,22 @@
 //function to get day and set sunset and image
 //function get the image and data from each api
 //probably just load image as it's grabbed
-let day = returnToday();
+let day= returnToday();
 let locationText;
 let lat;
 let long;
 let calendar;
 let calInput;
-//window.addEventListener("load", findLocation());
-window.addEventListener("load", function(){dateSelected(day)});
-//calendar = document.querySelector("#inputCal");
-//
-window.addEventListener("load", createCal);
-//
-//
 
-//button.onclick = findLocation();
-location.onload = findLocation();
+window.addEventListener("load", createCal);
+window.addEventListener("load", createButton);
+window.addEventListener("load", function(){
+    dateSelected(day)
+});
 
 
 function findLocation(){
+    console.log("Trying to find location");
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position);
     }
@@ -34,9 +31,10 @@ function position(pos){
 function returnToday(){
     let formDate = "";
     let date = new Date();
-    let day = date.getDay();
+    let day = date.getDate();
     formDate += `${date.getFullYear()}-${date.getMonth() + 1}-${day}`;
     console.log(formDate);
+    day = formDate;
     return formDate;
 }
 
@@ -136,16 +134,27 @@ function dataError(e){
     console.log("An error occurred");
 }
 
-
 //Cal seup
 function createCal()
 {
     calendar = document.querySelector('#calendar');
-    let calSetup = '<input type="date" id="inputCal">';
+
+    let calSetup = `<input type="date" id="inputCal" value="${day}"  min="1995-6-16" max = "${day}">`;
     calendar.innerHTML += calSetup;
     calInput = document.querySelector('#inputCal');
-    calInput.addEventListener("change", function(){dateSelected(calInput.value)},false);
+    calInput.addEventListener("change", function(){
+        locationInformation(calInput.value);
+        dateSelected(calInput.value);
+    },false);
     return calendar;
 }
+function createButton()
+{
+    let locInfo = document.querySelector("#location");
+    locInfo.innerHTML = "<button id='locButton'>Get Location?</button>";
+    locInfo.innerHTML += "Sunrise: N/A, Sunset: N/A";
+    document.querySelector("#locButton").onclick = findLocation;
+}
+
 //let cal = document.querySelector('inputCal');
 //cal.addEventListener("change", dateSelected(cal.value));
