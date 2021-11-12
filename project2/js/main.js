@@ -121,3 +121,10 @@ function sunDataLoaded(e){
 function dataError(e){
     console.log("An error occurred");
 }
+
+function datePicker()
+{
+    let calSpace = document.querySelector('#datepicker');
+    calSpace.datePicker();
+}
+
