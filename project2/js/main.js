@@ -95,9 +95,13 @@ function imgDataLoaded(e){
         image += ` src = '${obj.hdurl}' alt = '${obj.title}'/> `;
         document.querySelector('#pod').innerHTML = image;
         
+        //add description
+        document.querySelector('#description').innerHTML = `<h2>${obj.title}</h2><p>${obj.explanation}</p>`;
 
         //make background
-        
+        body.style.background = `#03122b url(${obj.hdurl}) no-repeat center center fixed`;
+        body.style.backgroundSize = "200rem 200rem";
+        //body.style.opacity = "1";
     }
 }
 function sunDataLoaded(e){
