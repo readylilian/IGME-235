@@ -11,7 +11,7 @@ let long;
 window.addEventListener("load", dateSelected(day));
 //button.onclick = findLocation();
 location.onload = findLocation();
-
+datepicker.onload = datePicker();
 function findLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position);
@@ -98,10 +98,11 @@ function imgDataLoaded(e){
         //add description
         document.querySelector('#description').innerHTML = `<h2>${obj.title}</h2><p>${obj.explanation}</p>`;
 
-        //make background
+         //make background
         body.style.background = `#03122b url(${obj.hdurl}) no-repeat center center fixed`;
         body.style.backgroundSize = "200rem 200rem";
         //body.style.opacity = "1";
+        
     }
 }
 function sunDataLoaded(e){
@@ -129,6 +130,6 @@ function dataError(e){
 function datePicker()
 {
     let calSpace = document.querySelector('#datepicker');
-    calSpace.datePicker();
+    calSpace.datePicker("show");
 }
 
