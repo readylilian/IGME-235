@@ -7,14 +7,20 @@ let day = returnToday();
 let locationText;
 let lat;
 let long;
+let calendar;
+let calInput;
 //window.addEventListener("load", findLocation());
-window.addEventListener("load", dateSelected(day));
-let cal = document.querySelector('inputCal');
-cal.onchange = function(){
-    dateSelected(cal.value);
-}
+window.addEventListener("load", function(){dateSelected(day)});
+//calendar = document.querySelector("#inputCal");
+//
+window.addEventListener("load", createCal);
+//
+//
+
 //button.onclick = findLocation();
 location.onload = findLocation();
+
+
 function findLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position);
@@ -131,3 +137,15 @@ function dataError(e){
 }
 
 
+//Cal seup
+function createCal()
+{
+    calendar = document.querySelector('#calendar');
+    let calSetup = '<input type="date" id="inputCal">';
+    calendar.innerHTML += calSetup;
+    calInput = document.querySelector('#inputCal');
+    calInput.addEventListener("change", function(){dateSelected(calInput.value)},false);
+    return calendar;
+}
+//let cal = document.querySelector('inputCal');
+//cal.addEventListener("change", dateSelected(cal.value));
