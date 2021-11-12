@@ -9,9 +9,12 @@ let lat;
 let long;
 //window.addEventListener("load", findLocation());
 window.addEventListener("load", dateSelected(day));
+let cal = document.querySelector('inputCal');
+cal.onchange = function(){
+    dateSelected(cal.value);
+}
 //button.onclick = findLocation();
 location.onload = findLocation();
-datepicker.onload = datePicker();
 function findLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(position);
@@ -127,9 +130,4 @@ function dataError(e){
     console.log("An error occurred");
 }
 
-function datePicker()
-{
-    let calSpace = document.querySelector('#datepicker');
-    calSpace.datePicker("show");
-}
 
