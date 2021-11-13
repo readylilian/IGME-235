@@ -3,7 +3,8 @@
 //function to get day and set sunset and image
 //function get the image and data from each api
 //probably just load image as it's grabbed
-let day= returnToday();
+let today = returnToday();
+let day;
 let locationText;
 let lat;
 let long;
@@ -12,9 +13,7 @@ let calInput;
 
 window.addEventListener("load", createCal);
 window.addEventListener("load", createButton);
-window.addEventListener("load", function(){
-    dateSelected(day)
-});
+window.addEventListener("load", checkDate);
 
 
 function findLocation(){
@@ -34,7 +33,6 @@ function returnToday(){
     let day = date.getDate();
     formDate += `${date.getFullYear()}-${date.getMonth() + 1}-${day}`;
     console.log(formDate);
-    day = formDate;
     return formDate;
 }
 
@@ -100,7 +98,7 @@ function imgDataLoaded(e){
         image = "<img";
         //get the hd version
         image += ` src = '${obj.hdurl}' alt = '${obj.title}'/> `;
-        document.querySelector('#pod').innerHTML = image;
+        document.querySelector('#pod').innerHTML += image;
         
         //add description
         document.querySelector('#description').innerHTML = `<h2>${obj.title}</h2><p>${obj.explanation}</p>`;
@@ -125,7 +123,7 @@ function sunDataLoaded(e){
     }
     else{
 
-        locationText.innerHTML = `Your location is: '${long}','${lat}'<br>Sunrise is at: '${obj.results.sunrise}' Sunset is at: '${obj.results.sunset}'`
+        locationText.innerHTML = `Your location is: '${long}','${lat}'<br>Sunrise is at: '${obj.results.sunrise}' UTC Sunset is at: '${obj.results.sunset}' UTC`
         //locationText.innerHTML = ;
         
     }
@@ -133,18 +131,83 @@ function sunDataLoaded(e){
 function dataError(e){
     console.log("An error occurred");
 }
+function prevDay(){
+    let yesterday = new Date(`${day} 00:00`);
+    yesterday.setDate(yesterday.getDate() - 1);
+    
+    let formDate = `${yesterday.getFullYear()}-${yesterday.getMonth() + 1}-`;
+    
+    if(yesterday.getDate()<10)
+    {
+        formDate += `0${yesterday.getDate()}`;
+    }
+    else{formDate += `${yesterday.getDate()}`;}
+    calInput.value = formDate;
+    day = calInput.value;
+    checkDate();
+    //dateSelected(day);
+    locationInformation(day);
+}
+function nextDay(){
+    let tomorrowCheck = new Date(`${day} 00:00`);
+    tomorrowCheck.setDate(tomorrowCheck.getDate() + 1);
+
+    let formDate = `${tomorrowCheck.getFullYear()}-${tomorrowCheck.getMonth() + 1}-`;
+    if(tomorrowCheck.getDate()<10)
+    {
+        formDate += `0${tomorrowCheck.getDate()}`;
+    }
+    else{formDate += `${tomorrowCheck.getDate()}`;}
+    calInput.value = formDate;
+    day = calInput.value;
+    checkDate();
+    //dateSelected(day);
+    locationInformation(day);
+}
+//Date validation
+function checkDate(){
+    //Is tomorrow past today? If yes, no next button only previous
+    //let prev = ;
+    document.querySelector('#pod').innerHTML ="";
+    let pod = document.querySelector('#pod');
+    let prevButton = document.createElement("button");
+    prevButton.innerHTML = "Previous";
+    prevButton.setAttribute("onclick", "prevDay()");
+    pod.appendChild(prevButton);
+
+
+    let tomorrowCheck = new Date(`${day} 00:00`);
+    tomorrowCheck.setDate(tomorrowCheck.getDate() + 1);
+
+    if(tomorrowCheck>new Date()){
+        //Don't have an option to go to the next day, only have back
+        console.log("Not valid");
+    }
+    else{
+        //Do have a next day button
+        let nextButton = document.createElement("button");
+        nextButton.innerHTML = "Next";
+        nextButton.setAttribute("onclick", "nextDay()");
+        pod.appendChild(nextButton);
+        
+        console.log("Valid");
+    }
+
+    createButton();
+    dateSelected(calInput.value);
+}
 
 //Cal seup
 function createCal()
 {
     calendar = document.querySelector('#calendar');
-
-    let calSetup = `<input type="date" id="inputCal" value="${day}"  min="1995-6-16" max = "${day}">`;
+    let calSetup = `<input type="date" id="inputCal" value="${today}"  min="1995-6-16" max = "${today}">`;
+    day = today;
     calendar.innerHTML += calSetup;
     calInput = document.querySelector('#inputCal');
     calInput.addEventListener("change", function(){
-        locationInformation(calInput.value);
-        dateSelected(calInput.value);
+        day = calInput.value;
+        checkDate();
     },false);
     return calendar;
 }
@@ -155,6 +218,3 @@ function createButton()
     locInfo.innerHTML += "Sunrise: N/A, Sunset: N/A";
     document.querySelector("#locButton").onclick = findLocation;
 }
-
-//let cal = document.querySelector('inputCal');
-//cal.addEventListener("change", dateSelected(cal.value));
