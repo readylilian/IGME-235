@@ -109,6 +109,7 @@ function imgDataLoaded(e){
         //body.style.opacity = "1";
         
     }
+    createButton();
 }
 function sunDataLoaded(e){
     let xhr = e.target;
@@ -170,9 +171,11 @@ function checkDate(){
     //let prev = ;
     document.querySelector('#pod').innerHTML ="";
     let pod = document.querySelector('#pod');
+
     let prevButton = document.createElement("button");
     prevButton.innerHTML = "Previous";
     prevButton.setAttribute("onclick", "prevDay()");
+    prevButton.setAttribute("id", "prev");
     pod.appendChild(prevButton);
 
 
@@ -188,13 +191,13 @@ function checkDate(){
         let nextButton = document.createElement("button");
         nextButton.innerHTML = "Next";
         nextButton.setAttribute("onclick", "nextDay()");
+        nextButton.setAttribute("id", "next");
         pod.appendChild(nextButton);
         
         console.log("Valid");
     }
-
-    createButton();
     dateSelected(calInput.value);
+    
 }
 
 //Cal seup

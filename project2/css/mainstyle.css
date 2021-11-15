@@ -1,3 +1,4 @@
+html{height: 100%;}
 body
 {
     display: grid;
@@ -7,8 +8,10 @@ body
     "cal     pod     desc"
     "cal     sun     desc"
     "footer  footer  footer";
-    grid-template-rows: 80px auto auto 100px;
-    grid-column: 15% 70% 15%;
+    grid-template-rows: 80px auto auto auto;
+    grid-template-columns: auto 60% auto;
+    column-gap: 1%;
+    
     background-color: #03122b;
     color: #FFFFFF;
     margin: 0;
@@ -18,14 +21,33 @@ header
     background-color: #03122b;
     grid-area: header;
 }
-footer{grid-area: footer;}
+footer{grid-area: footer; background-color: #03122b;;}
 #calendar{grid-area: cal;}
 #location{grid-area: sun;}
-#description{grid-area: desc;}
-#pod{grid-area: pod; margin: auto}
+#description
+{
+    grid-area: desc; 
+    background-color: #03122b; 
+    height: fit-content;
+    align-self: center;
+    justify-self: center;
+}
+h2{margin: 5px;}
+p{margin: 5px;}
+#pod
+{
+    display: grid;
+    grid-area: pod; 
+    margin: auto;
+    grid-template-areas:
+    "prev   next"
+    "pic    pic";
+}
+#pod img {grid-area: pic;}
+#next{grid-area: next;}
+#prev{grid-area: prev}
 img
 {
     opacity: 1;
-    max-height: 70vh;
-    max-width: 70vw;
+    max-width: 100%;
 }
