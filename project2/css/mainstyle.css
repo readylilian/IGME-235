@@ -3,8 +3,12 @@ html
     height: 100%;
     font-family: Merriweather;
     font-weight: 400;
-    font-size: 15px;
     line-height: 26px;
+}
+/*Attempting animation*/
+@keyframes animateBackground{
+    from{background-position: 0 50%;}
+    to{background-position: 100% 50%;}
 }
 body
 {
@@ -16,6 +20,8 @@ body
     "content"
     "footer";
     background-blend-mode:lighten;
+    background-position: 0px 50%;
+    animation: animateBackground 200s linear infinite;
     row-gap: 1%;
     background-color: #03122b;
     color: #E6E8E6;
@@ -123,7 +129,7 @@ input{
     height: fit-content;
     font-family: 'Source Sans Pro';
     font-weight: 300;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 33px;
 }
 #description
@@ -137,7 +143,7 @@ input{
     padding: 10px;
     font-family: 'Source Sans Pro';
     font-weight: 300;
-    font-size: 22px;
+    font-size: 18px;
     line-height: 33px;
 }
 
@@ -148,11 +154,13 @@ input{
     grid-template-areas:
     "prev   next"
     "pic    pic";
-    
+    grid-template-rows: 7vh auto;
     justify-items: center;
-    align-items: center;
+    max-height: fit-content;
 }
-#pod img {grid-area: pic;box-shadow: 0 5px 40px #e6a93788;}
-iframe{min-width: 100%; min-height: 100%; grid-area: pic;}
+#pod img {grid-area: pic;box-shadow: 0 5px 40px #e6a93788; max-height: 80%;}
+#pod iframe{height:80%;grid-area: pic; margin: 10px;}
 #next{grid-area: next;}
 #prev{grid-area: prev}
+
+

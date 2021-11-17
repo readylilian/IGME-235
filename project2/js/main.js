@@ -105,8 +105,8 @@ function imgDataLoaded(e){
             document.querySelector('#pod').innerHTML += image;
 
             //make background
-            body.style.background = `#03122b url(${obj.hdurl}) no-repeat center center fixed`;
-            body.style.backgroundSize = "200rem 200rem";
+            body.style.background = `#03122b url(${obj.hdurl}) no-repeat 0px 50% fixed`;
+            body.style.backgroundSize = "200% auto";
 
 
             //body.style.opacity = "1";
@@ -151,13 +151,20 @@ function prevDay(){
     let yesterday = new Date(`${day} 00:00`);
     yesterday.setDate(yesterday.getDate() - 1);
     
-    let formDate = `${yesterday.getFullYear()}-${yesterday.getMonth() + 1}-`;
+    let formDate = `${yesterday.getFullYear()}-`;
     
+    if((yesterday.getMonth() + 1) <10)
+    {
+        formDate += `0${yesterday.getMonth() + 1}-`;
+    }
+    else{formDate += `${yesterday.getMonth() + 1}-`;}
+
     if(yesterday.getDate()<10)
     {
         formDate += `0${yesterday.getDate()}`;
     }
     else{formDate += `${yesterday.getDate()}`;}
+    console.log(formDate);
     calInput.value = formDate;
     day = calInput.value;
     checkDate();
@@ -168,7 +175,14 @@ function nextDay(){
     let tomorrowCheck = new Date(`${day} 00:00`);
     tomorrowCheck.setDate(tomorrowCheck.getDate() + 1);
 
-    let formDate = `${tomorrowCheck.getFullYear()}-${tomorrowCheck.getMonth() + 1}-`;
+    let formDate = `${tomorrowCheck.getFullYear()}-`;
+
+    if((tomorrowCheck.getMonth() + 1) <10)
+    {
+        formDate += `0${tomorrowCheck.getMonth() + 1}-`;
+    }
+    else{formDate += `${tomorrowCheck.getMonth() + 1}-`;}
+
     if(tomorrowCheck.getDate()<10)
     {
         formDate += `0${tomorrowCheck.getDate()}`;
