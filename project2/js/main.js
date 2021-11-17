@@ -10,7 +10,10 @@ let lat;
 let long;
 let calendar;
 let calInput;
-
+const prefix = "lr4631-";
+const dateKey = prefix + "dates";
+const storedDates = localStorage.getItem(dateKey);
+let dayList  = "";
 window.addEventListener("load", createCal);
 window.addEventListener("load", createButton);
 window.addEventListener("load", checkDate);
@@ -239,8 +242,14 @@ function createCal()
     calInput = document.querySelector('#inputCal');
     calInput.addEventListener("change", function(){
         day = calInput.value;
+        dayList += `<br>${day}`;
         checkDate();
+        localStorage.setItem(dateKey, `${dayList}`);
     },false);
+    if(storedDates)
+    {
+        calendar.innerHTML += `<br>Previously Searched For Dates:${storedDates}`;
+    }
     return calendar;
 }
 function createButton()
