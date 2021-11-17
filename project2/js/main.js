@@ -89,25 +89,40 @@ function imgDataLoaded(e){
     let obj = JSON.parse(xhr.responseText);
 
     let body = document.querySelector('body');
+    let pod = document.querySelector('#pod');
     //8 if no response print and return
     if(!obj.date || obj.date == 0){
         document.querySelector("#pod").innerHTML = "<b>No results found for '" +  + "'</b>";
         return;
     }
-    else{
-        image = "<img";
-        //get the hd version
-        image += ` src = '${obj.hdurl}' alt = '${obj.title}'/> `;
-        document.querySelector('#pod').innerHTML += image;
-        
+    else 
+    {
+        if (obj.media_type == "image")
+        {
+            image = "<img";
+            //get the hd version
+            image += ` src = '${obj.hdurl}' alt = '${obj.title}'/> `;
+            document.querySelector('#pod').innerHTML += image;
+
+            //make background
+            body.style.background = `#03122b url(${obj.hdurl}) no-repeat center center fixed`;
+            body.style.backgroundSize = "200rem 200rem";
+
+
+            //body.style.opacity = "1";
+        }
+        else if (obj.media_type == "video")
+        {
+            image = "<iframe width = '100%'";
+            image += `src="${obj.url}"></iframe>`
+            pod.innerHTML += image;
+
+            body.style.background = "";
+            body.style.backgroundSize = "";
+
+        }
         //add description
         document.querySelector('#description').innerHTML = `<h2>${obj.title}</h2><p>${obj.explanation}</p>`;
-
-         //make background
-        body.style.background = `#03122b url(${obj.hdurl}) no-repeat center center fixed`;
-        body.style.backgroundSize = "200rem 200rem";
-        //body.style.opacity = "1";
-        
     }
     createButton();
 }

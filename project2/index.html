@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Astronomy</title>
     <link rel = "stylesheet" href="css/mainstyle.css">
+    <link rel="shortcut icon" href="media/ufo_icon-icons.com_60256.ico"> 
     <script src = "js/main.js"></script>
     <!--Datepicker-->
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -16,23 +17,27 @@
     
     
     <header><h1>NASAtronomy Of The Day</h1></header>
+    <div id = "container">
+        <!--Calander set up-->
+        <div id="calendar">
+            Pick a new date? <br>
+        </div>
+        <div id="pod">
+            <p>No picture today</p>
+        </div>
+        <div id="location">
+            Sunrise and sunset could not be found.
+        </div>
+        <div id="description">BLAJDLKAJDLS</div>
+    </div>
     
-    <!--Calander set up-->
-    <div id="calendar">
-        Pick a new date? <br>
-    </div>
-    <div id="pod">
-        <p>No picture today</p>
-    </div>
-    <div id="location">
-        Sunrise and sunset could not be found.
-    </div>
-    <div id="description">BLAJDLKAJDLS</div>
     <footer>Sources, no links for now working on interaction
         <ul>
             <li>https://sunrise-sunset.org/api</li>
             <li>https://data.nasa.gov/Space-Science/Astronomy-Picture-of-the-Day-API/ez2w-t8ua</li>
             <li>https://developer.mozilla.org/en-US/docs/Web/API/Navigator</li>
+            <li>https://icon-icons.com/icon/ufo-flying-saucer-space/60256</li>
+            <li>https://nasa.github.io/nasawds-site/components/typography/</li>
         </ul>
     </footer>
 </body>
