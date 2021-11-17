@@ -4,7 +4,7 @@ html
     font-family: Merriweather;
     font-weight: 400;
     font-size: 15px;
-    line-height: 1.7em/26px;
+    line-height: 26px;
 }
 body
 {
@@ -15,7 +15,7 @@ body
     "header"
     "content"
     "footer";
-    background-blend-mode:luminosity;
+    background-blend-mode:lighten;
     row-gap: 1%;
     background-color: #03122b;
     color: #E6E8E6;
@@ -48,10 +48,10 @@ footer
     grid-area:footer;
     background-color: #03122b;
     padding: 10px;
-    font-family: Merriweather;
+    font-family: 'Merriweather';
     font-weight: 400;
     font-size: 15px;
-    line-height: 1.7em/26px;
+    line-height: 26px;
 }
 button
 {
@@ -76,7 +76,7 @@ h1
     font-family: Helvetica;
     font-weight: 700;
     font-size: 44px;
-    line-height: 1.2em/53px;
+    line-height: 53px;
     letter-spacing: -.021em;
 }
 h2
@@ -85,7 +85,7 @@ h2
     font-family: Helvetica;
     font-weight: 700;
     font-size: 34px;
-    line-height: 1.2em/53px;
+    line-height: 53px;
     letter-spacing: -.021em;
 }
 p{margin: 5px;}
@@ -96,13 +96,17 @@ img
     max-width: 100%;
 }
 input{
-    font-family: Source Sans Pro;
+    font-family: 'Source Sans Pro';
     font-weight: 400;
-    font-size: 15px;
-    line-height: 1.7em/26px;
+    font-size: 20px;
+    line-height: 26px;
 }
 #calendar
 {
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
     grid-area: cal;
     background-color:#03122b;
     padding: 10px;
@@ -112,14 +116,15 @@ input{
 #location
 {
     grid-area: sun;
-    background-color: #e6a937ad;
+    border: 10px solid #e6a937ad;
+    background-color:#2b0c038f; 
     box-shadow: 0 5px 40px #e6a93788;
     padding: 10px;
     height: fit-content;
-    font-family: Source Sans Pro;
+    font-family: 'Source Sans Pro';
     font-weight: 300;
     font-size: 22px;
-    line-height: 1.5em/33px;
+    line-height: 33px;
 }
 #description
 {
@@ -130,10 +135,10 @@ input{
     justify-self: center;
     box-shadow: 5px 5px 20px #020B1C ;
     padding: 10px;
-    font-family: Source Sans Pro;
+    font-family: 'Source Sans Pro';
     font-weight: 300;
     font-size: 22px;
-    line-height: 1.5em/33px;
+    line-height: 33px;
 }
 
 #pod
@@ -143,10 +148,11 @@ input{
     grid-template-areas:
     "prev   next"
     "pic    pic";
+    
     justify-items: center;
     align-items: center;
 }
-#pod img {grid-area: pic;}
+#pod img {grid-area: pic;box-shadow: 0 5px 40px #e6a93788;}
 iframe{min-width: 100%; min-height: 100%; grid-area: pic;}
 #next{grid-area: next;}
 #prev{grid-area: prev}
