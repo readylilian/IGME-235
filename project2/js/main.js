@@ -254,10 +254,13 @@ function createCal()
     calInput.addEventListener("change", function(){
         day = calInput.value;
         checkDate();
-        dayList += `<br>${day}`;
+        dayList += `<div onclick="dateLinkClick('${day}')";">${day}</div>`;
         localStorage.setItem(dateKey, `${dayList}`);
         storedDates = localStorage.getItem(dateKey);
-        document.querySelector('#prevDates p').innerHTML +=`<br>${day}`;
+        
+        document.querySelector('#prevDates').innerHTML +=`<div onclick="dateLinkClick('${day}')";">${day}</div>`;
+        
+        
     },false);
     
 }
@@ -270,18 +273,23 @@ function createButton()
     locButton.innerHTML = "Get Location?";
     locButton.setAttribute("onclick","findLocation()");
     locInfo.appendChild(locButton);
-    //locInfo.innerHTML = "<button id='locButton'>Get Location?</button>";
     locInfo.innerHTML += "Sunrise: N/A, Sunset: N/A";
-    //document.querySelector("#locButton").onclick = findLocation;
 }
 function createPrevDates()
 {
+    let prevDays = document.createElement("p");
+    prevDays.setAttribute("id", "prevDates");
+    prevDays.innerHTML = "Previously Searched For Dates:"
+    calendar.appendChild(prevDays);
     if(storedDates)
     {
         calendar = document.querySelector('#calendar');
-        let prevDays = document.createElement("p");
-        prevDays.setAttribute("id", "prevDates");
-        prevDays.innerHTML =`<p><br>Previously Searched For Dates:${storedDates}</p>`;
-        calendar.appendChild(prevDays);
+        document.querySelector("#prevDates").innerHTML +=`${storedDates}`;
     }
+}
+function dateLinkClick(date)
+{
+    day = date;
+    calInput.value = day;
+    checkDate();
 }

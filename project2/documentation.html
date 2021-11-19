@@ -18,14 +18,6 @@
 <body>
     <header><h1>NASAtronomy Of The Day</h1></header>
     <div id = "documentation">
-        <h2>Explanation</h2>
-        <p>
-            When the project was introducted I knew immediately that I wanted to go for the more difficult option. Doing another version of the Gif Finder wasn't interesting and I don't have a particular affection for any of the ones on the approved list. So I went through some of the lists provided and found an abundance of API's I could think of ways to work with. It got to the point where I couldn't just narrow it down to one, and decicded to do any extra work needed so that I could implement both the Sunrise and Sunset calculator and NASA's photo of the day. 
-            <br>This then became a little more complicated and I needed to include the Navigator API in order to get the location of the user to display the most accurate sunrise and sunset times for that person. I was however, convinced away from using Google's Location API so that I could factor in time zone to the sunrise and sunset time. That would probably be the next step for me in improving this site, I would like to have accurate time zones and account for daylight savings time.
-            <br>My inputs are the date-picker where people can jump to a specific day that they'd like to see, the previous and next buttons where you go to the day before or the day after, and my location button, which on being pressed, returns the sunrise and set times for your location and the day you're on.
-            <br>I'm really proud of the design that went into this project, getting the images to stand out and look presentable with the image in the background scrolling past at a pace that isn't distracting but is still noticable was a bit extra to learn but definitely worth it. I had tried a few other ways to make the background stand out, applying filters and background-blur effects, but the motion has definitely been the best solution.
-        </p>
-        <img src = "media/websiteplan.jpg" alt = "Original plan for the website design">
         <h2>APIs</h2>
         <ul>
             <li><a href = "https://sunrise-sunset.org/api" target="_blank" rel="noopener noreferrer">Sunrise and Sunset</a></li>
@@ -38,6 +30,15 @@
             <li><a href ="https://icon-icons.com/icon/ufo-flying-saucer-space/60256" target="_blank" rel="noopener noreferrer">Saucer Icon</a></li>
             <li><a href = "https://nasa.github.io/nasawds-site/components/typography/" target="_blank" rel="noopener noreferrer">NASA's Typography Rules</a></li>
         </ul>
+        <img src = "media/websiteplan.jpg" alt = "Original plan for the website design">
+        <h2>Explanation</h2>
+        <p>
+            When the project was introducted I knew immediately that I wanted to go for the more difficult option. Doing another version of the Gif Finder wasn't interesting and I don't have a particular affection for any of the ones on the approved list. So I went through some of the lists provided and found an abundance of API's I could think of ways to work with. It got to the point where I couldn't just narrow it down to one, and decicded to do any extra work needed so that I could implement both the Sunrise and Sunset calculator and NASA's photo of the day. 
+            <br>This then became a little more complicated and I needed to include the Navigator API in order to get the location of the user to display the most accurate sunrise and sunset times for that person. I was however, convinced away from using Google's Location API so that I could factor in time zone to the sunrise and sunset time. That would probably be the next step for me in improving this site, I would like to have accurate time zones and account for daylight savings time.
+            <br>My inputs are the date-picker where people can jump to a specific day that they'd like to see, the previous and next buttons where you go to the day before or the day after, and my location button, which on being pressed, returns the sunrise and set times for your location and the day you're on. Update! I also now have the previously searched dates as clickable items that will take you back to that page! I didn't want to log pages seen through previous and next since that felt more like you were just looking around, while with the calender lookup was searching for a specific day.
+            <br>I'm really proud of the design that went into this project, getting the images to stand out and look presentable with the image in the background scrolling past at a pace that isn't distracting but is still noticable was a bit extra to learn but definitely worth it. I had tried a few other ways to make the background stand out, applying filters and background-blur effects, but the motion has definitely been the best solution. I do want to point out that my stored dates now works in the way I had planned it to. It's mildly annoying to see a website tracking where on the site you've been without being able to click back to those, so now the dates on previously searched will take you back to those dates. I purposefully didn't make those links, because since you've already been to those pages they wouldn't have much difference when clicking on them.
+            <br>Prior to the input working completely I was thinking I should probably get a B or so because local storage wasn't working and that knocks you a letter on the rubric, however based on the current rubric and the state of the website I would definitely think my project deserves an A. Not only did I fulfil all the requirements but I went beyond the requirements, learning to animate in javascript, using multiple unlisted APIs and very minimally utilizing the Giphy Finder code.
+        </p>
     </div>
     
 
