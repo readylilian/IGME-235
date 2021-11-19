@@ -109,7 +109,7 @@ function imgDataLoaded(e){
 
             //make background
             body.style.background = `#03122b url(${obj.hdurl}) no-repeat 0px 50% fixed`;
-            body.style.backgroundSize = "200% auto";
+            body.style.backgroundSize = "300% auto";
 
 
             //body.style.opacity = "1";
@@ -236,21 +236,23 @@ function checkDate(){
 function createCal()
 {
     calendar = document.querySelector('#calendar');
-    let calSetup = `<input type="date" id="inputCal" value="${today}"  min="1995-6-16" max = "${today}">`;
+    let calSetup = `<input type="date" id="inputCal" value="${today}" min="1995-6-16" max = "${today}">`;
     day = today;
     calendar.innerHTML += calSetup;
     calInput = document.querySelector('#inputCal');
     calInput.addEventListener("change", function(){
         day = calInput.value;
-        dayList += `<br>${day}`;
         checkDate();
+        dayList += `<br>${day}`;
         localStorage.setItem(dateKey, `${dayList}`);
     },false);
+    
     if(storedDates)
     {
-        calendar.innerHTML += `<br>Previously Searched For Dates:${storedDates}`;
+        calendar.innerHTML += `<p><br>Previously Searched For Dates:${storedDates}</p>`;
     }
-    return calendar;
+
+    
 }
 function createButton()
 {

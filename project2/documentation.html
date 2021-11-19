@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation for NASAtronomy Of The Day</title>
+    <link rel = "stylesheet" href="css/mainstyle.css">
+    <link rel="shortcut icon" href="media/ufo_icon-icons.com_60256.ico">
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header><h1>NASAtronomy Of The Day</h1></header>
+    <div id = "documentation">
+        <h2>Explanation</h2>
+        <p>
+            When the project was introducted I knew immediately that I wanted to go for the more difficult option. Doing another version of the Gif Finder wasn't interesting and I don't have a particular affection for any of the ones on the approved list. So I went through some of the lists provided and found an abundance of API's I could think of ways to work with. It got to the point where I couldn't just narrow it down to one, and decicded to do any extra work needed so that I could implement both the Sunrise and Sunset calculator and NASA's photo of the day. 
+            <br>This then became a little more complicated and I needed to include the Navigator API in order to get the location of the user to display the most accurate sunrise and sunset times for that person. I was however, convinced away from using Google's Location API so that I could factor in time zone to the sunrise and sunset time. That would probably be the next step for me in improving this site, I would like to have accurate time zones and account for daylight savings time.
+            <br>My inputs are the date-picker where people can jump to a specific day that they'd like to see, the previous and next buttons where you go to the day before or the day after, and my location button, which on being pressed, returns the sunrise and set times for your location and the day you're on.
+            <br>I'm really proud of the design that went into this project, getting the images to stand out and look presentable with the image in the background scrolling past at a pace that isn't distracting but is still noticable was a bit extra to learn but definitely worth it. I had tried a few other ways to make the background stand out, applying filters and background-blur effects, but the motion has definitely been the best solution.
+        </p>
+        <img src = "media/websiteplan.jpg" alt = "Original plan for the website design">
+        <h2>APIs</h2>
+        <ul>
+            <li><a href = "https://sunrise-sunset.org/api" target="_blank" rel="noopener noreferrer">Sunrise and Sunset</a></li>
+            <li><a href="https://data.nasa.gov/Space-Science/Astronomy-Picture-of-the-Day-API/ez2w-t8ua" target="_blank" rel="noopener noreferrer">NASA's APOD</a></li>
+            <li><a href = "https://developer.mozilla.org/en-US/docs/Web/API/Navigator" target="_blank" rel="noopener noreferrer">Location</a></li>
+            
+        </ul>
+        <h2>Design Sources</h2>
+        <ul>
+            <li><a href ="https://icon-icons.com/icon/ufo-flying-saucer-space/60256" target="_blank" rel="noopener noreferrer">Saucer Icon</a></li>
+            <li><a href = "https://nasa.github.io/nasawds-site/components/typography/" target="_blank" rel="noopener noreferrer">NASA's Typography Rules</a></li>
+        </ul>
+    </div>
+    
+
+    <footer><h3><a href="index.html">Return to NASAtronomy Of The Day</a></h3></footer>
+</body>
+</html>

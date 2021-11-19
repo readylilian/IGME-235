@@ -14,22 +14,22 @@ body
 {
     height: 100%;
     display: grid;
-    grid-template-rows: 80px auto auto;
+    
     grid-template-areas: 
     "header"
     "content"
     "footer";
+    grid-template-rows: 80px auto 80px;
     background-blend-mode:lighten;
     background-position: 0px 50%;
     animation: animateBackground 200s linear infinite;
-    row-gap: 1%;
+    row-gap: 40px;
     background-color: #03122b;
     color: #E6E8E6;
     margin: 0;
 }
 #container{
     justify-self: center;
-    align-self: center;
     width: 98%;
     max-height: 100%;
     grid-area: content;
@@ -47,17 +47,15 @@ header
 {
     grid-area: header;
     background-color: #03122b;
-    
+    max-height: 100%;
 }
 footer
 {
+    align-self: center;
     grid-area:footer;
     background-color: #03122b;
     padding: 10px;
-    font-family: 'Merriweather';
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 26px;
+    text-align: center;
 }
 button
 {
@@ -93,6 +91,21 @@ h2
     font-size: 34px;
     line-height: 53px;
     letter-spacing: -.021em;
+}
+h3
+{
+    font-family: Helvetica;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+}
+li
+{
+    margin-bottom: 5px;
+    font-family: Merriweather;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 26px;
 }
 p{margin: 5px;}
 
@@ -146,7 +159,13 @@ input{
     font-size: 18px;
     line-height: 33px;
 }
-
+#documentation{
+    padding: 10px;
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 33px;
+}
 #pod
 {
     display: grid;
@@ -158,9 +177,61 @@ input{
     justify-items: center;
     max-height: fit-content;
 }
+
 #pod img {grid-area: pic;box-shadow: 0 5px 40px #e6a93788; max-height: 80%;}
+#documentation img{max-width: 50%;}
 #pod iframe{height:80%;grid-area: pic; margin: 10px;}
 #next{grid-area: next;}
 #prev{grid-area: prev}
 
+a:link{color: #E6E8E6;}
+a:visited, a:focus{color: #b84c2b;}
+a:hover{color:#e6a937bd;}
+a:active{color:#e6a937;}
 
+@media screen and (max-width:1200px)
+{
+    
+    #container
+    {
+        display: grid;
+        grid-template-areas:
+        "cal     pod"
+        "sun     pod"
+        "desc    desc";
+        grid-template-rows: auto auto auto;
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (max-width:770px)
+{
+    body{grid-template-rows: 160px auto auto;}
+    
+    #container
+    {
+        display: grid;
+        grid-template-areas:
+        "pod"
+        "cal"
+        "sun"
+        "desc";
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: auto;
+    }
+    #pod iframe{height:80vw;}
+}
+
+@media screen and (min-width:2000px)
+{
+
+    #container
+    {
+        display: grid;
+        grid-template-areas:
+        "cal  pod   desc"
+        "cal  pod   sun ";
+        grid-template-rows: 50% 50%;
+        grid-template-columns: 10% auto auto;
+    }
+}
