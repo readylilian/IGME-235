@@ -186,7 +186,7 @@ input{
 
 a:link{color: #E6E8E6;}
 a:visited, a:focus{color: #b84c2b;}
-a:hover{color:#e6a937bd;}
+a:hover{color:#e6a937e1;}
 a:active{color:#e6a937;}
 
 @media screen and (max-width:1200px)
@@ -206,8 +206,8 @@ a:active{color:#e6a937;}
 
 @media screen and (max-width:770px)
 {
-    body{grid-template-rows: 160px auto auto;}
-    
+    body{grid-template-rows: 80px auto auto;}
+    h1{font-size: 38px;}
     #container
     {
         display: grid;
@@ -222,7 +222,7 @@ a:active{color:#e6a937;}
     #pod iframe{height:80vw;}
 }
 
-@media screen and (min-width:2000px)
+@media screen and (min-width:1600px)
 {
 
     #container
@@ -231,7 +231,7 @@ a:active{color:#e6a937;}
         grid-template-areas:
         "cal  pod   desc"
         "cal  pod   sun ";
-        grid-template-rows: 50% 50%;
-        grid-template-columns: 10% auto auto;
+        grid-template-rows: auto auto;
+        grid-template-columns: auto auto auto;
     }
 }

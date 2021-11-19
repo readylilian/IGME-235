@@ -10,13 +10,20 @@ let lat;
 let long;
 let calendar;
 let calInput;
+
 const prefix = "lr4631-";
 const dateKey = prefix + "dates";
-const storedDates = localStorage.getItem(dateKey);
+storedDates = localStorage.getItem(dateKey);
+
 let dayList  = "";
+
+
+
 window.addEventListener("load", createCal);
-window.addEventListener("load", createButton);
+//window.addEventListener("load", createButton);
+window.addEventListener("load", createPrevDates);
 window.addEventListener("load", checkDate);
+
 
 
 function findLocation(){
@@ -236,6 +243,10 @@ function checkDate(){
 function createCal()
 {
     calendar = document.querySelector('#calendar');
+    if(storedDates)
+    {
+        dayList = storedDates;
+    }
     let calSetup = `<input type="date" id="inputCal" value="${today}" min="1995-6-16" max = "${today}">`;
     day = today;
     calendar.innerHTML += calSetup;
@@ -245,19 +256,32 @@ function createCal()
         checkDate();
         dayList += `<br>${day}`;
         localStorage.setItem(dateKey, `${dayList}`);
+        storedDates = localStorage.getItem(dateKey);
+        document.querySelector('#prevDates p').innerHTML +=`<br>${day}`;
     },false);
-    
-    if(storedDates)
-    {
-        calendar.innerHTML += `<p><br>Previously Searched For Dates:${storedDates}</p>`;
-    }
-
     
 }
 function createButton()
 {
     let locInfo = document.querySelector("#location");
-    locInfo.innerHTML = "<button id='locButton'>Get Location?</button>";
+    locInfo.innerHTML = "";
+    locButton = document.createElement("button");
+    locButton.setAttribute("id", "locButton");
+    locButton.innerHTML = "Get Location?";
+    locButton.setAttribute("onclick","findLocation()");
+    locInfo.appendChild(locButton);
+    //locInfo.innerHTML = "<button id='locButton'>Get Location?</button>";
     locInfo.innerHTML += "Sunrise: N/A, Sunset: N/A";
-    document.querySelector("#locButton").onclick = findLocation;
+    //document.querySelector("#locButton").onclick = findLocation;
+}
+function createPrevDates()
+{
+    if(storedDates)
+    {
+        calendar = document.querySelector('#calendar');
+        let prevDays = document.createElement("p");
+        prevDays.setAttribute("id", "prevDates");
+        prevDays.innerHTML =`<p><br>Previously Searched For Dates:${storedDates}</p>`;
+        calendar.appendChild(prevDays);
+    }
 }
