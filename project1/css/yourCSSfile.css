@@ -17,7 +17,7 @@ li{margin: 15px 0;}
 a:link{color: #315d7a;}
 a:visited{color: #153243}
 a:focus, a:hover, a:active{color: #4a7795;}
-
+html{scroll-behavior: smooth;}
 main img{width: 400px;}
 body
 {
@@ -37,7 +37,7 @@ body
     "progress"
     "contact";
     grid-template-columns: 100%;
-    grid-template-rows: 100px 6vh .8fr .4fr 1fr 15rem;
+    grid-template-rows: 100px 6vh auto auto auto auto;
 }
 
 header
@@ -80,7 +80,7 @@ header img
 .project, .projectvar
 {
     box-sizing: border-box;
-    max-height: 400px;
+    max-height: fit-content;
     display: grid;
     grid-template-rows: 10% 90%; 
     grid-template-columns: auto auto;
@@ -156,7 +156,7 @@ header img
     {
         font-size: 1rem;
         grid-template-columns: 100%;
-        grid-template-rows: 100px 10vh 1fr .2fr 1fr 15rem;
+        grid-template-rows: 100px 10vh auto auto auto auto;
         
     }
     #nav{justify-content: space-evenly;}
@@ -166,14 +166,14 @@ header img
         display: flex;
         flex-flow: column;
         align-content: space-around;
-        max-height: 100%;
+        height: fit-content;
         
     }
     .project, .projectvar
     {
         
         height:100%;
-        grid-template-rows: 3vh 40% auto; 
+        grid-template-rows: 3vh auto auto; 
         grid-template-columns: 100%;
         grid-template-areas: 
         "title"    
@@ -183,6 +183,8 @@ header img
         row-gap: 20px;
     }
     .project img, .projectvar img{height: 100%; margin:5px 0;}
+    .project p, .projectvar p {grid-area: desc; overflow: visible;}
+
     p{height: 98%; margin: 10% 0;}
     #about img{width: 40%; float: left; margin: 10px}
     #about
@@ -199,7 +201,7 @@ header img
     body
     {
         grid-template-columns: 100%;
-        grid-template-rows: 100px 6vh 1fr 40vh 1fr 15rem;
+        grid-template-rows: 100px 6vh 1fr 40vh 1fr auto;
     }
     #projectScroll
     {
