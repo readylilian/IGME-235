@@ -1,3 +1,5 @@
+
+
 class Circle extends PIXI.Graphics{
     constructor(x=0, y=0, radius, color = 0x000000){
         super();
@@ -9,16 +11,16 @@ class Circle extends PIXI.Graphics{
         this.radius = radius;
     }
 }
-class Rect extends PIXI.Graphics{
-    constructor(x=0, y=0, width, height, color = 0x000000){
+class Square extends PIXI.Graphics{
+    constructor(x=0, y=0, width, color = 0x000000){
         super();
         this.beginFill(color);
-        this.drawRect(x,y,width, height);
+        this.drawRect(x,y,width, width);
         this.endFill();
         this.x = x;
         this.y = y;
         this.width = width;
-        this.height = height;
+        this.height = width;
     }
 }
 class Triangle extends PIXI.Graphics{
