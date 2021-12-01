@@ -4,7 +4,7 @@ const app = new PIXI.Application({
     height: 800,
     backgroundColor: 0xfaf0e6
 });
-document.body.appendChild(app.view);
+document.querySelector("#draw").appendChild(app.view);
 
 // constants
 const sceneWidth = app.view.width;
@@ -18,7 +18,7 @@ let countDown;
 let gameScene;
 let gameEnd;
 
-let brushType = "Square";
+let brushType = "Star";
 let brushSize = 10;
 let brushColor = 0x000000;
 
@@ -30,13 +30,36 @@ app.loader.load();
 
 function setup() {
 	stage = app.stage;
+    //Create the Title Screen
+    titleScene = new PIXI.Container();
+    stage.addChild(titleScene);
+    //Create the countdown screen
+    countScene = new PIXI.Container();
+    countScene.visible = false;
+    stage.addChild(countScene);
 	//Create the main `game` scene
     gameScene = new PIXI.Container();
+    gameScene.visible = false;
     stage.addChild(gameScene);
+    //Create the end scene
+    endScene = new PIXI.Container();
+    endScene.visible = false;
+    stage.addChild(endScene);
+
+    createLabelsAndButtons();
 
     app.view.onpointerdown = Draw;
     app.view.onpointerup = StopDraw;
+    app.view.onpointerout = StopDraw;
 }
+
+function createLabelsAndButtons()
+{
+    let titleLabel1 = new PIXI.TextStyle({
+        
+    })
+}
+
 function StopDraw(e){
     if(mouseDown){
         clearInterval(mouseDown);
@@ -70,6 +93,12 @@ function Draw(e){
                 gameScene.addChild(st);
                 break;
         }
-    },10);
+    },1);
     
+}
+
+function EraseAll(){
+    while(gameScene.firstChild){
+        gameScene.removeChild(gameScene.firstChild);
+    }
 }

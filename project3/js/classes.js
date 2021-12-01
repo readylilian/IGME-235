@@ -4,7 +4,7 @@ class Circle extends PIXI.Graphics{
     constructor(x=0, y=0, radius, color = 0x000000){
         super();
         this.beginFill(color);
-        this.drawCircle(x,y,radius);
+        this.drawCircle(0,0,radius);
         this.endFill();
         this.x = x;
         this.y = y;
@@ -15,7 +15,7 @@ class Square extends PIXI.Graphics{
     constructor(x=0, y=0, width, color = 0x000000){
         super();
         this.beginFill(color);
-        this.drawRect(x,y,width, width);
+        this.drawRect(0,0,width, width);
         this.endFill();
         this.x = x;
         this.y = y;
@@ -27,7 +27,7 @@ class Triangle extends PIXI.Graphics{
     constructor(x=0, y=0, radius, color = 0x000000){
         super();
         this.beginFill(color);
-        this.drawRegularPolygon(x,y,radius, 3,0);
+        this.drawRegularPolygon(0,0,radius, 3,0);
         this.endFill();
         this.x = x;
         this.y = y;
@@ -38,7 +38,7 @@ class Star extends PIXI.Graphics{
     constructor(x=0, y=0, radius, color = 0x000000){
         super();
         this.beginFill(color);
-        this.drawStar(x, y, 5, radius);
+        this.drawStar(0, 0, 5, radius);
         this.endFill();
         this.x = x;
         this.y = y;
