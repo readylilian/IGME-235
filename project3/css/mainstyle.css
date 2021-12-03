@@ -1,2 +1,5 @@
 img{width: 40%;}
-body{cursor: url(../media/paintbrush.png) 0 16, crosshair;}
+body{
+    font-family: 'Amatic SC', cursive;
+    cursor: url(../media/paintbrush.png) 0 16, crosshair;
+}

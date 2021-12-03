@@ -13,10 +13,8 @@ const sceneHeight = app.view.height;
 
 
 let stage;
-let startScene;
+let titleScene,instScene,countScene,gameScene,endScene;
 let countDown;
-let gameScene;
-let gameEnd;
 
 let brushType = "Star";
 let brushSize = 10;
@@ -33,6 +31,10 @@ function setup() {
     //Create the Title Screen
     titleScene = new PIXI.Container();
     stage.addChild(titleScene);
+    //Create the instruction screen
+    instScene = new PIXI.Container();
+    instScene.visible = false;
+    stage.addChild(instScene);
     //Create the countdown screen
     countScene = new PIXI.Container();
     countScene.visible = false;
@@ -55,11 +57,74 @@ function setup() {
 
 function createLabelsAndButtons()
 {
-    let titleLabel1 = new PIXI.TextStyle({
-        
-    })
-}
+    let titleStyle = new PIXI.TextStyle({
+        fill: 0x515151,
+        fontSize: 120,
+        fontFamily:"Amatic SC"
+    });
+    let paraStyle = new PIXI.TextStyle({
+        fill: 0x515151,
+        fontSize: 70,
+        fontFamily:"Amatic SC"
+    });
+    let textButtonStyle = new PIXI.TextStyle({
+        fill: 0x515151,
+        fontSize: 70,
+        fontFamily:"Amatic SC"
+    });
+    //Title screen setup
+    //Title
+    let titleLabel = new PIXI.Text("Luck of the Draw!");
+    titleLabel.x = 100;
+    titleLabel.y = 200;
+    titleLabel.style = titleStyle;
+    titleScene.addChild(titleLabel);
+    //How to play button
+    let instButton = new PIXI.Text("How to Play");
+    instButton.style = textButtonStyle;
+    instButton.x = 250;
+    instButton.y = 350;
+    instButton.interactive = true;
+    instButton.buttonMode = true;
+    instButton.on("pointerup", showInst);
+    titleScene.addChild(instButton);
+    //Start button
+    let startButton = new PIXI.Text("Start!");
+    startButton.style = textButtonStyle;
+    startButton.x = 300;
+    startButton.y = 450;
+    startButton.interactive = true;
+    startButton.buttonMode = true;
+    titleScene.addChild(startButton);
+    //Instruction screen
+    //instructions
+    let instLabel = new PIXI.Text(`1) Press "Start"\n2) A 60 second timer will begin, \n and a word will appear at the top \nof the screen\n3) You have until time runs out \nto draw the word\n4) When the timer runs out, \nwe'll take a picture`);
+    instLabel.style = paraStyle;
+    instLabel.x = 20;
+    instLabel.y = 100;
+    instScene.addChild(instLabel);
+    //back button
+    let backButton = new PIXI.Text("Back");
+    backButton.style = textButtonStyle;
+    backButton.x = 20;
+    backButton.y = 650;
+    backButton.interactive = true;
+    backButton.buttonMode = true;
+    backButton.on("pointerup", showTitle);
+    instScene.addChild(backButton);
 
+}
+function showInst(){
+    titleScene.visible = false;
+    instScene.visible = true;
+}
+function showTitle(){
+    titleScene.visible = true;
+    instScene.visible = false;
+    countScene.visible = false;
+    gameScene.visible = false;
+    endScene.visible = false;
+}
 function StopDraw(e){
     if(mouseDown){
         clearInterval(mouseDown);
