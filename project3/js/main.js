@@ -15,12 +15,14 @@ const sceneHeight = app.view.height;
 let stage;
 let titleScene,instScene,countScene,gameScene,endScene;
 let countDown;
+let timer;
 
-let brushType = "Star";
+let brushType = "Circle";
 let brushSize = 10;
 let brushColor = 0x000000;
 
 let mouseDown;
+let savedImages;
 
 app.loader.onProgress.add(e => { console.log(`progress=${e.progress}`) });
 app.loader.onComplete.add(setup);
@@ -58,8 +60,14 @@ function setup() {
 function createLabelsAndButtons()
 {
     let titleStyle = new PIXI.TextStyle({
+        padding:20,
         fill: 0x515151,
         fontSize: 120,
+        fontFamily:"Amatic SC"
+    });
+    let countStyle = new PIXI.TextStyle({
+        fill: 0x515151,
+        fontSize: 300,
         fontFamily:"Amatic SC"
     });
     let paraStyle = new PIXI.TextStyle({
@@ -77,6 +85,7 @@ function createLabelsAndButtons()
     let titleLabel = new PIXI.Text("Luck of the Draw!");
     titleLabel.x = 100;
     titleLabel.y = 200;
+    titleLabel.nextLineHeightBehavior = true;
     titleLabel.style = titleStyle;
     titleScene.addChild(titleLabel);
     //How to play button
@@ -95,6 +104,7 @@ function createLabelsAndButtons()
     startButton.y = 450;
     startButton.interactive = true;
     startButton.buttonMode = true;
+    startButton.on("pointerup",showCount);
     titleScene.addChild(startButton);
     //Instruction screen
     //instructions
@@ -112,11 +122,25 @@ function createLabelsAndButtons()
     backButton.buttonMode = true;
     backButton.on("pointerup", showTitle);
     instScene.addChild(backButton);
+    //Countdown scene
+    let count1 = new PIXI.Text("1!");
+    count1.style = countStyle;
+    count1.x = 330;
+    count1.y = 300;
+    count1.visible = false;
+    countScene.addChild(count1);
+    let count2 = new PIXI.Text("2!");
+    count2.style = countStyle;
+    count2.x = 330;
+    count2.y = 300;
+    count2.visible = false;
+    countScene.addChild(count2);
+    let count3 = new PIXI.Text("3!");
+    count3.style = countStyle;
+    count3.x = 330;
+    count3.y = 300;
+    countScene.addChild(count3);
 
-}
-function showInst(){
-    titleScene.visible = false;
-    instScene.visible = true;
 }
 function showTitle(){
     titleScene.visible = true;
@@ -124,6 +148,51 @@ function showTitle(){
     countScene.visible = false;
     gameScene.visible = false;
     endScene.visible = false;
+}
+function showInst(){
+    titleScene.visible = false;
+    instScene.visible = true;
+}
+function showCount()
+{
+    titleScene.visible = false;
+    countScene.visible = true;
+    gameScene.visible = false;
+    endScene.visible = false;
+    countDown = 3;
+    setTimeout(function(){
+        EraseAll();
+        showGame();
+        console.log("called showGame");
+    },3000);
+    timer = setInterval(() => {
+        countDown--;
+        countScene.children[countDown].visible = false;
+        countScene.children[countDown-1].visible = true;
+    }, 1000);
+}
+function showGame(){
+    clearInterval(timer);
+    titleScene.visible = false;
+    countScene.visible = false;
+    gameScene.visible = true;
+    setTimeout(() => {
+        showEnd();
+        //savedImages += `<img src="${app.renderer.plugins.extract.image()}" alt ="Your drawing!">`;
+        //savedImages = app.renderer.plugins.extract.image(gameScene);
+        app.renderer.plugins.extract.canvas(gameScene).toBlob((b)=>{
+            let a = document.createElement(`<img = "${URL.createObjectURL(b)}>`);
+            document.querySelector("#photobank").append(a);
+        }, 'image/png');
+        //document.querySelector("#photobank").appendChild(savedImages);
+        //document.querySelector("#photobank").innerHTML = savedImages;
+        console.log("called showEnd");
+    }, 6000);
+}
+function showEnd(){
+    clearInterval(timer);
+    gameScene.visible = false;
+    endScene.visible = true;
 }
 function StopDraw(e){
     if(mouseDown){
@@ -159,11 +228,9 @@ function Draw(e){
                 break;
         }
     },1);
-    
 }
-
 function EraseAll(){
-    while(gameScene.firstChild){
-        gameScene.removeChild(gameScene.firstChild);
+    while(gameScene.children[0]){
+        gameScene.removeChild(gameScene.children[0]);
     }
 }
