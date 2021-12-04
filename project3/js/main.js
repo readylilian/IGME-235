@@ -66,16 +66,19 @@ function createLabelsAndButtons()
         fontFamily:"Amatic SC"
     });
     let countStyle = new PIXI.TextStyle({
+        padding:40,
         fill: 0x515151,
         fontSize: 300,
         fontFamily:"Amatic SC"
     });
     let paraStyle = new PIXI.TextStyle({
+        padding:20,
         fill: 0x515151,
         fontSize: 70,
         fontFamily:"Amatic SC"
     });
     let textButtonStyle = new PIXI.TextStyle({
+        padding:20,
         fill: 0x515151,
         fontSize: 70,
         fontFamily:"Amatic SC"
@@ -140,7 +143,24 @@ function createLabelsAndButtons()
     count3.x = 330;
     count3.y = 300;
     countScene.addChild(count3);
-
+    //End Scene
+    let playButton = new PIXI.Text("Play again?")
+    playButton.style = textButtonStyle;
+    playButton.x = 260;
+    playButton.y = 300;
+    playButton.interactive = true;
+    playButton.buttonMode = true;
+    playButton.on("pointerup", showCount);
+    endScene.addChild(playButton);
+    
+    let endBack = new PIXI.Text("Exit");
+    endBack.style = textButtonStyle;
+    endBack.x = 340;
+    endBack.y = 400;
+    endBack.interactive = true;
+    endBack.buttonMode = true;
+    endBack.on("pointerup", showTitle);
+    endScene.addChild(endBack);
 }
 function showTitle(){
     titleScene.visible = true;
@@ -162,6 +182,8 @@ function showCount()
     countDown = 3;
     setTimeout(function(){
         EraseAll();
+        countScene.children[0].visible = false;
+        countScene.children[2].visible = true;
         showGame();
         console.log("called showGame");
     },3000);
@@ -177,16 +199,27 @@ function showGame(){
     countScene.visible = false;
     gameScene.visible = true;
     setTimeout(() => {
-        showEnd();
+        showEnd();/*
+        app.renderer.extract.canvas(gameScene).toBlob((b) => {
+            const a = document.createElement('a');
+            document.body.append(a);
+            a.download = 'screenshot';
+            a.href = URL.createObjectURL(b);
+            a.click();
+            a.remove();
+        }, 'image/png');*/
+        //let renderer = PIXI.autoDetectRenderer();
+        //this.renderer.render(gameScene);
+        //let data = renderer.view.toDataURL("image/png");
+        //document.querySelector("#photobank").innerHTML += `<img src="${data}" alt = "your drawing">`;
         //savedImages += `<img src="${app.renderer.plugins.extract.image()}" alt ="Your drawing!">`;
-        //savedImages = app.renderer.plugins.extract.image(gameScene);
-        app.renderer.plugins.extract.canvas(gameScene).toBlob((b)=>{
-            let a = document.createElement(`<img = "${URL.createObjectURL(b)}>`);
-            document.querySelector("#photobank").append(a);
-        }, 'image/png');
+        //savedImages = app.renderer.plugins.extract.image(stage);
         //document.querySelector("#photobank").appendChild(savedImages);
         //document.querySelector("#photobank").innerHTML = savedImages;
-        console.log("called showEnd");
+        //renderer.render(gameScene);
+        //let data = app.renderer.view.toDataURL("image/png",1);
+        //$('')
+        //console.log("called showEnd");
     }, 6000);
 }
 function showEnd(){
@@ -206,8 +239,6 @@ function Draw(e){
 
         let newX = clamp(mousePos.x, 0, sceneWidth);
         let newY = clamp(mousePos.y, 0, sceneHeight);
-        //let newX = mousePos.x;
-        //let newY = mousePos.y;
         console.log(newX + ", " + newY);
         switch(brushType){
             case "Circle":
