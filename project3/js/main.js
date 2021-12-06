@@ -220,7 +220,7 @@ function showGame(){
         //let data = app.renderer.view.toDataURL("image/png",1);
         //$('')
         //console.log("called showEnd");
-    }, 6000);
+    }, 60000);
 }
 function showEnd(){
     clearInterval(timer);
