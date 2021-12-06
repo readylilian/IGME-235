@@ -3,3 +3,4 @@ body{
     font-family: 'Amatic SC', cursive;
     cursor: url(../media/paintbrush.png) 0 16, crosshair;
 }
+p{font-size: 80px; margin: 0;}

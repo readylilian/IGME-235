@@ -65,6 +65,11 @@ function createLabelsAndButtons()
         fontSize: 120,
         fontFamily:"Amatic SC"
     });
+    let iconStyle = new PIXI.TextStyle({
+        padding:10,
+        fill: 0x000000,
+        fontSize: 20
+    })
     let countStyle = new PIXI.TextStyle({
         padding:40,
         fill: 0x515151,
@@ -143,8 +148,22 @@ function createLabelsAndButtons()
     count3.x = 330;
     count3.y = 300;
     countScene.addChild(count3);
+
+    //Player scene buttons
+    //Brush width
+    //Brush color
+    //Brush shape
+    let starBrush = new PIXI.Text(`<i class="fas fa-star"></i>`);
+    starBrush.style = iconStyle;
+    starBrush.x = 10;
+    starBrush.y = 750;
+    starBrush.interactive = true;
+    starBrush.buttonMode = true;
+    gameScene.addChild(starBrush);
+
+
     //End Scene
-    let playButton = new PIXI.Text("Play again?")
+    let playButton = new PIXI.Text("Play again?");
     playButton.style = textButtonStyle;
     playButton.x = 260;
     playButton.y = 300;
@@ -180,6 +199,7 @@ function showCount()
     gameScene.visible = false;
     endScene.visible = false;
     countDown = 3;
+    getWord();
     setTimeout(function(){
         EraseAll();
         countScene.children[0].visible = false;
@@ -223,6 +243,7 @@ function showGame(){
     }, 60000);
 }
 function showEnd(){
+    clearWord();
     clearInterval(timer);
     gameScene.visible = false;
     endScene.visible = true;
@@ -238,7 +259,7 @@ function Draw(e){
         let mousePos = app.renderer.plugins.interaction.mouse.global;
 
         let newX = clamp(mousePos.x, 0, sceneWidth);
-        let newY = clamp(mousePos.y, 0, sceneHeight);
+        let newY = clamp(mousePos.y, 0, 700);
         console.log(newX + ", " + newY);
         switch(brushType){
             case "Circle":
