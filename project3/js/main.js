@@ -11,11 +11,13 @@ const sceneWidth = app.view.width;
 const sceneHeight = app.view.height;
 
 
-
+let currentWord;
 let stage;
 let titleScene,instScene,countScene,gameScene,endScene;
-let countDown;
-let timer;
+let countDown, timer;
+let backSound, countSound, switchSound;
+
+//let soundOn = true;
 
 let brushType = "Circle";
 let brushSize = 10;
@@ -51,6 +53,19 @@ function setup() {
     stage.addChild(endScene);
 
     createLabelsAndButtons();
+    //Create the sounds
+    backSound = new Howl({
+        src: ['media/sounds/backing.mp3'],
+        autoplay:true,
+        loop:true,
+        volume: 0.3
+    });
+    countSound = new Howl({
+        src: ['media/sounds/countdown.wav']
+    });
+    switchSound = new Howl({
+        src:['media/sounds/switch.wav']
+    });
 
     app.view.onpointerdown = Draw;
     app.view.onpointerup = StopDraw;
@@ -200,6 +215,7 @@ function showCount()
     endScene.visible = false;
     countDown = 3;
     getWord();
+    countSound.play();
     setTimeout(function(){
         EraseAll();
         countScene.children[0].visible = false;
@@ -219,28 +235,23 @@ function showGame(){
     countScene.visible = false;
     gameScene.visible = true;
     setTimeout(() => {
-        showEnd();/*
-        app.renderer.extract.canvas(gameScene).toBlob((b) => {
-            const a = document.createElement('a');
-            document.body.append(a);
-            a.download = 'screenshot';
-            a.href = URL.createObjectURL(b);
-            a.click();
-            a.remove();
-        }, 'image/png');*/
-        //let renderer = PIXI.autoDetectRenderer();
-        //this.renderer.render(gameScene);
-        //let data = renderer.view.toDataURL("image/png");
-        //document.querySelector("#photobank").innerHTML += `<img src="${data}" alt = "your drawing">`;
-        //savedImages += `<img src="${app.renderer.plugins.extract.image()}" alt ="Your drawing!">`;
-        //savedImages = app.renderer.plugins.extract.image(stage);
-        //document.querySelector("#photobank").appendChild(savedImages);
-        //document.querySelector("#photobank").innerHTML = savedImages;
-        //renderer.render(gameScene);
-        //let data = app.renderer.view.toDataURL("image/png",1);
-        //$('')
+        
+        let newImage = document.createElement("div");
+        newImage.className = "drawing"
+        let savedImage = app.renderer.plugins.extract.image(stage);
+        newImage.appendChild(savedImage);
+        let newTitle = document.createElement("h2");
+        newTitle.textContent = currentWord;
+        newImage.appendChild(newTitle);
+        let photobank = document.querySelector("#photobank");
+        photobank.appendChild(newImage);
+        //Three pictures shown at a time
+        if(photobank.childElementCount>4){
+            photobank.removeChild(photobank.children[1]);
+        }
+        showEnd();
         //console.log("called showEnd");
-    }, 60000);
+    }, 6000);
 }
 function showEnd(){
     clearWord();

@@ -1,6 +1,31 @@
-img{width: 40%;}
+
 body{
+    margin: 0;
     font-family: 'Amatic SC', cursive;
     cursor: url(../media/paintbrush.png) 0 16, crosshair;
+    display: grid;
+    grid-template-areas:
+    "title   word word"
+    "buttons draw photos"
+    "footer footer footer";
+    grid-template-columns: 10% 800px 1fr;
+    grid-template-rows: 100px 800px 50px;
 }
 p{font-size: 80px; margin: 0;}
+h1{grid-area: title;}
+h2{font-size: 40px; margin: 5px;}
+#word{grid-area: word;}
+#draw{grid-area: draw ;}
+#buttons{grid-area: buttons;}
+#photobank{
+    grid-area:photos; 
+    max-width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+footer{grid-area: footer;}
+img{max-width: 200px;}
+.drawing{
+    min-width: 0;
+}

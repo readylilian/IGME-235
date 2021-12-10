@@ -23,6 +23,7 @@ function wordLoaded(e){
     let obj = JSON.parse(xhr.responseText)
     let word = document.querySelector("#word");
     word.innerHTML = "Your word is: " + obj;
+    currentWord = obj;
 }
 function dataError(e){
     console.log("An error occurred");
