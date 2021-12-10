@@ -1,5 +1,5 @@
-
-
+//Set up class (brush) constructors
+//Create circles when called
 class Circle extends PIXI.Graphics{
     constructor(x=0, y=0, radius, color = 0x000000){
         super();
@@ -11,6 +11,7 @@ class Circle extends PIXI.Graphics{
         this.radius = radius;
     }
 }
+//Create squares when called
 class Square extends PIXI.Graphics{
     constructor(x=0, y=0, width, color = 0x000000){
         super();
@@ -23,6 +24,7 @@ class Square extends PIXI.Graphics{
         this.height = width;
     }
 }
+//Create triangles when called
 class Triangle extends PIXI.Graphics{
     constructor(x=0, y=0, radius, color = 0x000000){
         super();
@@ -34,6 +36,7 @@ class Triangle extends PIXI.Graphics{
         this.radius = radius
     }
 }
+//Create stars when called
 class Star extends PIXI.Graphics{
     constructor(x=0, y=0, radius, color = 0x000000){
         super();

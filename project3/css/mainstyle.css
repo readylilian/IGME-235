@@ -1,31 +1,67 @@
-
+html{display: flex; justify-content: center;}
 body{
-    margin: 0;
+    text-align: center;
+    margin:0;
     font-family: 'Amatic SC', cursive;
     cursor: url(../media/paintbrush.png) 0 16, crosshair;
     display: grid;
     grid-template-areas:
-    "title   word word"
-    "buttons draw photos"
-    "footer footer footer";
-    grid-template-columns: 10% 800px 1fr;
-    grid-template-rows: 100px 800px 50px;
+    "word countdown"
+    "draw photos"
+    "footer footer";
+    grid-template-columns: 600px 200px;
+    column-gap: 20px;
+    grid-template-rows: 50px 700px 60px;
+    row-gap: 20px;
 }
-p{font-size: 80px; margin: 0;}
-h1{grid-area: title;}
-h2{font-size: 40px; margin: 5px;}
+p{font-size: 44px; margin: 0;}
+h1{font-size: 44px;margin: 5px;}
+h2{font-size: 36px; margin: 5px;}
 #word{grid-area: word;}
 #draw{grid-area: draw ;}
-#buttons{grid-area: buttons;}
+#count{grid-area: countdown; align-self: center; justify-self: center;}
 #photobank{
-    grid-area:photos; 
-    max-width: 100%;
+    grid-area:photos;
+    display: flex;
+    flex-direction: column;
+    background-color: #B79472;
+    align-items: center;
+}
+footer{grid-area: footer; background-color:#B79472 ;}
+img
+{
+    max-width: 160px;
+    background-color: #FFFFFF;
+    border: 10px solid #FAF0E6;
+}
+.drawing{
     min-width: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-footer{grid-area: footer;}
-img{max-width: 200px;}
-.drawing{
-    min-width: 0;
+
+@media screen and (max-width:800px)
+{
+    body
+    {
+        grid-template-areas:
+        "word"
+        "countdown"
+        "draw"
+        "photos"
+        "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 20px 700px 240px 60px;
+        row-gap: 20px;
+    }
+    #draw{margin-left: auto; margin-right: auto;}
+    #photobank{
+        display: flex;
+        flex-direction: row;
+        background-color: #B79472;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    #photobank h1 {display: none;}
 }
