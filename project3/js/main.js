@@ -9,7 +9,8 @@ document.querySelector("#draw").appendChild(app.view);
 // constants
 const sceneWidth = app.view.width;
 const sceneHeight = app.view.height;
-
+const imageKey = "lr4631-images";
+let storedImages = localStorage.getItem(imageKey);
 
 let currentWord;
 let stage;
@@ -24,9 +25,8 @@ let brushSize = 10;
 let brushColor = 0x000000;
 
 let mouseDown;
-let savedImages;
 
-
+let typeArray, sizeArray, colorArray;
 
 //Creates the scenes
 //Loads the spritesheet buttons
@@ -69,6 +69,7 @@ function setup() {
     switchSound = new Howl({
         src:['media/sounds/switch.wav']
     });
+
     app.view.onpointerdown = draw;
     app.view.onpointerup = stopDraw;
     app.view.onpointerout = stopDraw;
@@ -239,11 +240,13 @@ function showGame(){
             newTitle.textContent = currentWord;
             newImage.appendChild(newTitle);
             let photobank = document.querySelector("#photobank");
+            //storedImages = newImage;
             photobank.appendChild(newImage);
             //Three pictures shown at a time, if there's more than three remove the first image in the gallery, and add the most recent to the bottom
             if(photobank.childElementCount>4){
                 photobank.removeChild(photobank.children[1]);
             }
+            
         }
         //then display the endscreen
         countDown = 0;
@@ -307,6 +310,9 @@ function eraseAll(){
     while(gameScene.children[0]){
         gameScene.removeChild(gameScene.children[0]);
     }
+    typeArray = "";
+    sizeArray = "";
+    colorArray = "";
 }
 //since we need to clear the drawings each round, and remove the buttons to take the picture,
 //buttons need to be reinstated each round 
@@ -360,6 +366,8 @@ function createGameScene(){
     starBrush.buttonMode = true;
     starBrush.on("pointerup",changeActiveBrush);
     gameScene.addChild(starBrush);
+
+
     //Brush width
     let smallBrush = new PIXI.Sprite(buttonSheet.textures["10px.png"]);
     smallBrush.anchor.set(0.5);
@@ -468,4 +476,33 @@ function createGameScene(){
     greenBrush.buttonMode = true;
     greenBrush.on("pointerup",changeActiveColor);
     gameScene.addChild(greenBrush);
+
+    sizeArray = [smallBrush,midBrush,largeBrush];
+    typeArray = [circleBrush,squareBrush,triBrush,starBrush];
+    colorArray = [blackBrush,whiteBrush,redBrush,greenBrush,blueBrush,yellBrush];
+
+    for(let i = 0; i<typeArray.length;i++){
+        if(typeArray[i].value==brushType){
+            typeArray[i].alpha = 1;
+        }
+        else{
+            typeArray[i].alpha = 0.5;
+        }
+    }
+    for(let i = 0; i<sizeArray.length;i++){
+        if(sizeArray[i].value==brushSize){
+            sizeArray[i].alpha = 1;
+        }
+        else{
+            sizeArray[i].alpha = 0.5;
+        }
+    }
+    for(let i = 0; i<colorArray.length;i++){
+        if(colorArray[i].value==brushColor){
+            colorArray[i].alpha = 1;
+        }
+        else{
+            colorArray[i].alpha = 0.5;
+        }
+    }
 }

@@ -38,15 +38,39 @@ function wordLoaded(e){
 function changeActiveBrush(e)
 {
     brushType = e.target.value;
+    e.target.alpha = 1;
+    for(let i = 0; i<typeArray.length;i++){
+        if(typeArray[i]==e.target){
+        }
+        else{
+            typeArray[i].alpha = 0.5;
+        }
+    }
     switchSound.play();
 }
 //changes the brush size
 function changeActiveSize(e){
     brushSize = e.target.value;
+    e.target.alpha = 1;
+    for(let i = 0; i<sizeArray.length;i++){
+        if(sizeArray[i]==e.target){
+        }
+        else{
+            sizeArray[i].alpha = 0.5;
+        }
+    }
     switchSound.play();
 }
 //change the brush color
 function changeActiveColor(e){
     brushColor = e.target.value;
+    e.target.alpha = 1;
+    for(let i = 0; i<colorArray.length;i++){
+        if(colorArray[i]==e.target){
+        }
+        else{
+            colorArray[i].alpha = 0.5;
+        }
+    }
     switchSound.play();
 }
